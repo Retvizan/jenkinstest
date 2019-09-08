@@ -1,9 +1,6 @@
 package test;
 
-import com.codeborne.selenide.Browser;
-import com.codeborne.selenide.Browsers;
-import com.codeborne.selenide.SelenideDriver;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -20,6 +17,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -29,22 +27,22 @@ public class BaseTest {
 
     @Before
     public void setup() throws MalformedURLException {
+        Configuration.driverManagerEnabled = true;
         String browser = System.getProperty("browser");
         switch (browser) {
             case ("chrome"):
-               // WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().setup();
                 options = new ChromeOptions();
                 break;
             case ("firefox"):
-                //WebDriverManager.firefoxdriver().version("v0.24.0").setup();
+                WebDriverManager.firefoxdriver().version("v0.24.0").setup();
                 options = new FirefoxOptions();
                 break;
             default:
-                //WebDriverManager.iedriver().setup();
-                options = new InternetExplorerOptions();
+                WebDriverManager.edgedriver().setup();
+                options = new EdgeOptions();
         }
 
-        //System.setProperty("webdriver.chrome.driver", "c:/selenium/chromedriver.exe");
 
         driver = new RemoteWebDriver(new URL("http://192.168.1.8:4444/wd/hub"), options);
         WebDriverRunner.setWebDriver(driver);
