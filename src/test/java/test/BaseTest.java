@@ -2,6 +2,7 @@ package test;
 
 import com.codeborne.selenide.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.codehaus.plexus.logging.LoggerManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.Capabilities;
@@ -16,6 +17,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.logging.Logger;
 
 import static com.codeborne.selenide.Configuration.browser;
 import static com.codeborne.selenide.Selenide.close;
@@ -25,10 +28,13 @@ public class BaseTest {
     private WebDriver driver;
     private Capabilities options;
 
+
     @Before
     public void setup() throws MalformedURLException {
         Configuration.driverManagerEnabled = true;
+
         String browser = System.getProperty("browser");
+        System.out.println("browser is: " + browser);
         switch (browser) {
             case ("chrome"):
                 WebDriverManager.chromedriver().setup();
@@ -43,18 +49,14 @@ public class BaseTest {
                 options = new EdgeOptions();
         }
 
-
         driver = new RemoteWebDriver(new URL("http://192.168.1.8:4444/wd/hub"), options);
         WebDriverRunner.setWebDriver(driver);
-        System.out.println("Opening google");
-        open("http://google.com");
-        System.out.println("google is opened");
-
     }
 
     @After
     public void teardown() {
-        close();
+        System.out.println("Closing browser");
+        driver.quit();
 
     }
 }

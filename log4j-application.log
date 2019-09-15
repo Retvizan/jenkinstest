@@ -1,0 +1,6 @@
+2019-09-15 14:14:54 DEBUG WebDriverManager:530 - Driver geckodriver v0.24.0 found in cache
+2019-09-15 14:14:54 INFO  WebDriverManager:1052 - Exporting webdriver.gecko.driver as C:\Users\Andrey\.m2\repository\webdriver\geckodriver\win64\v0.24.0\geckodriver.exe
+2019-09-15 14:16:10 DEBUG WebDriverManager:530 - Driver geckodriver v0.24.0 found in cache
+2019-09-15 14:16:10 INFO  WebDriverManager:1052 - Exporting webdriver.gecko.driver as C:\Users\Andrey\.m2\repository\webdriver\geckodriver\win64\v0.24.0\geckodriver.exe
+2019-09-15 14:20:48 DEBUG WebDriverManager:530 - Driver geckodriver v0.24.0 found in cache
+2019-09-15 14:20:48 INFO  WebDriverManager:1052 - Exporting webdriver.gecko.driver as C:\Users\Andrey\.m2\repository\webdriver\geckodriver\win64\v0.24.0\geckodriver.exe
